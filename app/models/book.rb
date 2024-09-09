@@ -6,10 +6,13 @@ class Book < ApplicationRecord
                     tsearch: { prefix: true }
                   }
 
+  # validations
+  validates_presence_of %i[title author genre isbn total_copies]
+
   # relationships
   has_many :book_borrows
 
-  def self.can_be_borrowed?
-    total_copies > BookBorrow.where(book_id: id).count
+  def can_be_borrowed?
+    total_copies > BookBorrow.where(book_id: id, returned: false).count
   end
 end

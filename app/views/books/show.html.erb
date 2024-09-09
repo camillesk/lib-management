@@ -1,17 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<div class="card w-50 mx-auto text-center">
+  <div class="card-body">
+    <%= render @book %>
+    <% if @book.can_be_borrowed? %>
+      <%= button_to "Borrow Book", book_borrows_path(book_borrow: {book_id: @book.id, user_id: current_user.id}), method: :post, class: "btn btn-warning mb-5" %>
+    <% end %>
 
-<%= render @book %>
-<% if Book.can_be_borrowed? %>
-  <%= button_to "Borrow Book", book_borrows_path(book_borrow: {book_id: @book.id, user_id: current_user.id}), method: :post, class: "btn btn-warning" %>
-<% end %>
+    <div>
+      <%= link_to "Back to books", books_path, class: "btn btn-secondary" %>
 
-<div>
-  <% if current_user.has_role? :librarian %>
-    <%= link_to "Edit this book", edit_book_path(@book) %> |
-  <% end %>
-  <%= link_to "Back to books", books_path %>
-
-  <% if current_user.has_role? :librarian %>
-    <%= button_to "Destroy this book", @book, method: :delete %>
-  <% end %>
+      <% if current_user.has_role? :librarian %>
+        <%= link_to "Edit this book", edit_book_path(@book), class: "btn btn-primary" %>
+        <%= link_to "Destroy this book", @book, method: :delete, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
 </div>

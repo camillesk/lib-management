@@ -1,6 +1,7 @@
 class BookBorrowsController < ApplicationController
-  before_action :set_book_borrow, only: %i[show edit update destroy]
+  before_action :set_book_borrow, only: %i[show edit update destroy return_book]
   before_action :authenticate_user!
+  before_action :verify_role, only: %i[return_book]
 
   # GET /book_borrows or /book_borrows.json
   def index
@@ -28,10 +29,10 @@ class BookBorrowsController < ApplicationController
 
     respond_to do |format|
       if @book_borrow.save
-        format.html { redirect_to book_borrow_url(@book_borrow), notice: 'Book borrow was successfully created.' }
+        format.html { redirect_to books_path, notice: 'Book was succesfully borrowed' }
         format.json { render :show, status: :created, location: @book_borrow }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to books_path, status: :unprocessable_entity, notice: @book_borrow.errors.first.message }
         format.json { render json: @book_borrow.errors, status: :unprocessable_entity }
       end
     end
@@ -57,6 +58,18 @@ class BookBorrowsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to book_borrows_url, notice: 'Book borrow was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def return_book
+    respond_to do |format|
+      if @book_borrow.update(returned: true)
+        format.html { redirect_to librarian_dashboard_path, notice: 'Book borrow was successfully updated.' }
+        format.json { render :show, status: :ok, location: @book_borrow }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @book_borrow.errors, status: :unprocessable_entity }
+      end
     end
   end
 

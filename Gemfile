@@ -76,6 +76,8 @@ end
 gem 'bootstrap', '~> 5.3.3'
 gem 'dartsass-sprockets'
 gem 'devise', '~> 4.9'
+gem 'faker'
+gem 'pagy', '~> 6.0'
 gem 'pg_search'
 gem 'rolify'
 gem 'rubocop'

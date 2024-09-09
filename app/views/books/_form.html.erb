@@ -12,31 +12,32 @@
   <% end %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.label :title, style: "display: block", class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :author, style: "display: block" %>
-    <%= form.text_field :author %>
+    <%= form.label :author, style: "display: block", class: "form-label" %>
+    <%= form.text_field :author, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :genre, style: "display: block" %>
-    <%= form.text_field :genre %>
+    <%= form.label :genre, style: "display: block", class: "form-label" %>
+    <%= form.text_field :genre, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :isbn, style: "display: block" %>
-    <%= form.text_field :isbn %>
+    <%= form.label :isbn, style: "display: block", class: "form-label" %>
+    <%= form.text_field :isbn, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :total_copies, style: "display: block" %>
-    <%= form.text_field :total_copies %>
+    <%= form.label :total_copies, style: "display: block", class: "form-label" %>
+    <%= form.text_field :total_copies, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="d-flex justify-content-end mt-3">
+    <%= link_to "Back", books_path, class: "btn btn-secondary" %>
+    <%= form.submit "Save", class: "btn btn-primary ms-2" %>
   </div>
 <% end %>

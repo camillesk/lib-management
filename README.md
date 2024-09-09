@@ -1,24 +1,36 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To run site:
 
-Things you may want to cover:
+> docker compose up
 
-* Ruby version
+> docker compose exec -it library-manager sh
 
-* System dependencies
+inside the shell of container run:
 
-* Configuration
+> rails db:setup (only on first run)
 
-* Database creation
+> rail s -b 0.0.0.0
 
-* Database initialization
+the site will be available at localhost:3000
 
-* How to run the test suite
+To run tests:
 
-* Services (job queues, cache servers, search engines, etc.)
+> docker compose exec -it library-manager sh
 
-* Deployment instructions
+inside the shell of container run:
 
-* ...
+> rspec
+
+
+Credentials:
+
+Member user: 
+    email: member1@mail.com
+    password: member1@123
+
+Librarian user:
+    email: librarian@mail.com
+    password: lib@123
+
+

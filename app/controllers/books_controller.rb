@@ -1,15 +1,18 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
   before_action :authenticate_user!
+  before_action :verify_role, except: %i[index show]
 
   # GET /books or /books.json
   def index
-    @books =
+    filtered =
       if params[:query].present?
         Book.search_book(params[:query])
       else
         Book.all
       end
+
+    @pagy, @books = pagy(filtered.all)
   end
 
   # GET /books/1 or /books/1.json

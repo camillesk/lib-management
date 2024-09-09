@@ -12,8 +12,9 @@
 
   <body>
     <%= render "application/navbar" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="container mt-5" >
+      <p style="color: green"><%= notice %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>
