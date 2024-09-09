@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @book %>
+
+<div>
+  <% if current_user.has_role? :librarian %>
+    <%= link_to "Edit this book", edit_book_path(@book) %> |
+  <% end %>
+  <%= link_to "Back to books", books_path %>
+
+  <% if current_user.has_role? :librarian %>
+    <%= button_to "Destroy this book", @book, method: :delete %>
+  <% end %>
+</div>

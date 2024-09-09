@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Books</h1>
+
+<div id="books">
+  <% @books.each do |book| %>
+    <%= render book %>
+    <p>
+      <%= link_to "Show this book", book %>
+    </p>
+  <% end %>
+  
+  <%= form_with url: books_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control me-1",
+      placeholder: "Find a Book"
+    %>
+    <%= submit_tag "book_search", class: "btn btn-info" %>
+  <% end %>
+</div>
+
+<% if current_user.has_role? :librarian %>
+  <%= link_to "New book", new_book_path %>
+<% end %>
