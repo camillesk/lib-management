@@ -5,4 +5,11 @@ class Book < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+
+  # relationships
+  has_many :book_borrows
+
+  def self.can_be_borrowed?
+    total_copies > BookBorrow.where(book_id: id).count
+  end
 end

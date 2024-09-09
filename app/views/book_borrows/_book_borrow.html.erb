@@ -1,0 +1,22 @@
+<div id="<%= dom_id book_borrow %>">
+  <p>
+    <strong>Book:</strong>
+    <%= book_borrow.book_id %>
+  </p>
+
+  <p>
+    <strong>Due date:</strong>
+    <%= book_borrow.due_date %>
+  </p>
+
+  <p>
+    <strong>Returned:</strong>
+    <%= book_borrow.returned %>
+  </p>
+
+  <p>
+    <strong>Borrowed by:</strong>
+    <%= book_borrow.user.name %>
+  </p>
+
+</div>

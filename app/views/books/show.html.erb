@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @book %>
+<% if Book.can_be_borrowed? %>
+  <%= button_to "Borrow Book", book_borrows_path(book_borrow: {book_id: @book.id, user_id: current_user.id}), method: :post, class: "btn btn-warning" %>
+<% end %>
 
 <div>
   <% if current_user.has_role? :librarian %>

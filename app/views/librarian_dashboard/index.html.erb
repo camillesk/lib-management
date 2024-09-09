@@ -1,0 +1,31 @@
+<h2>Total books count:</h2>
+
+<%= @total_books_count %>
+
+<h2>Total books:</h2>
+
+<% @total_books.each do |book| %>
+  <%= render book %>
+<% end %>
+
+<h2>Total borrowed books count:</h2>
+
+<%= @borrowed_books_count %>
+
+<h2>Borrowed books:</h2>
+
+<% @borrowed_books.each do |book| %>
+  <%= render book %>
+<% end %>
+
+<h2>Due Today books:</h2>
+
+<% @due_today_books.each do |book| %>
+  <%= render book %>
+<% end %>
+
+<h2>Overdue books:</h2>
+
+<% @overdue_books.each do |book| %>
+  <%= render book %>
+<% end %>
