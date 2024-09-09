@@ -26,11 +26,15 @@ inside the shell of container run:
 Credentials:
 
 Member user: 
+
     email: member1@mail.com
+
     password: member1@123
 
 Librarian user:
+
     email: librarian@mail.com
+
     password: lib@123
 
 
